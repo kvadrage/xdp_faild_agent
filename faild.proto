@@ -1,0 +1,26 @@
+syntax = "proto3";
+package faild;
+
+message Empty {
+
+}
+
+message Status {
+  int32 code = 1;
+  string message = 2;
+}
+
+message Stats {
+  map<string, int64> stats = 1;
+}
+
+message InitRequest {
+  string VIP = 1;
+}
+
+service FaildService {
+  rpc Init(InitRequest) returns (Status) {}
+  rpc Start(Empty) returns (Status) {}
+  rpc Stop(Empty) returns (Status) {}
+  rpc GetStatistics(Empty) returns (Stats) {}
+}
